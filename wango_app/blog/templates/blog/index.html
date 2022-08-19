@@ -9,6 +9,16 @@
 <body>
     <header><h1>Wango Blog</h1></header>
     <main>
+        <ul class="sidebar-nav"
+        
+           {% if user.is_authenticated %}
+             <li>User: {{ user.get_username }}</li>
+             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+           {% else %}
+             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+           {% endif %} 
+          </ul>
+
         {% if latest_blog_list %}
             {% for blogpost in latest_blog_list %}
                 <div>
@@ -20,5 +30,8 @@
             <p>No blogpost are available.</p>
         {% endif %}
     </main>
+    <footer>
+        
+    </footer>
 </body>
 </html>
