@@ -9,12 +9,16 @@
 <body>
     <header><h1>Wango Blog</h1></header>
     <main>
-        {% for blogpost in latest_blog_list %}
-            <div>
-                <h3>{{ blogpost.title }}</h3>
-                <div>{{ blogpost.blog_text }}</div>
-            </div>
-        {% endfor %}
+        {% if latest_blog_list %}
+            {% for blogpost in latest_blog_list %}
+                <div>
+                    <h3>{{ blogpost.title }}</h3>
+                    <p>{{ blogpost.blog_text }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No blogpost are available.</p>
+        {% endif %}
     </main>
 </body>
 </html>
