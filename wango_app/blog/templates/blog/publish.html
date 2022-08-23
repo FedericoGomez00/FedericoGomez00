@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wango</title>
+</head>
+<body>
+    <header>
+        <h1>Publish a blogpost</h1>
+    </header>
+    <main>
+        <form action=" {% url 'blog:published_blogpost' %} " method="post">
+            {% csrf_token %}
+
+            <fieldset>
+                <ul>
+                    <li>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title_text">
+                    </li>
+                    <li>
+                        <label for="content">Content:</label>
+                        <textarea name="body_text" id="content"></textarea>
+                    </li>
+                </ul>
+            </fieldset>
+            <input type="submit" value="Publish">
+        </form>
+    </main>
+</body>
+</html>

@@ -7,31 +7,14 @@
     <title>Wango</title>
 </head>
 <body>
-    <header><h1>Wango Blog</h1></header>
+    <header>
+        <h1>Wango page</h1>
+    </header>
     <main>
-        <ul class="sidebar-nav"
-        
-           {% if user.is_authenticated %}
-             <li>User: {{ user.get_username }}</li>
-             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-           {% else %}
-             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-           {% endif %} 
-          </ul>
-
-        {% if latest_blog_list %}
-            {% for blogpost in latest_blog_list %}
-                <div>
-                    <h3>{{ blogpost.title }}</h3>
-                    <p>{{ blogpost.blog_text }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No blogpost are available.</p>
-        {% endif %}
+        <p>
+            Esta es la página principal de Wango
+        </p>
+        <a href=" {% url "login" %} ">Login</a>
     </main>
-    <footer>
-        
-    </footer>
 </body>
 </html>

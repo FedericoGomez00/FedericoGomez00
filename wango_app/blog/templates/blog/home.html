@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wango</title>
+</head>
+<body>
+    <header><h1>Wango Blog</h1></header>
+    <main>
+        {% if user.is_authenticated %}
+            <ul class="sidebar-nav"
+                <li>User: {{ user.get_username }}</li>
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                <li><a href="{% url 'blog:my_blogposts' %}">My blogposts</a></li>
+                <li><a href="{% url 'blog:publish_blogpost' %}">Publish</a></li>
+            </ul>
+
+            {% if latest_blog_list %}
+                {% for blogpost in latest_blog_list %}
+                    <div>
+                        <h3>{{ blogpost.title }}</h3>
+                        <p>{{ blogpost.blog_text }}</p>
+                        <p>{{ blogpost.pub_date }}</p>
+                        <button>Like</button>
+                        <p>Likes: {{ blogpost.likes }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No blogpost are available.</p>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'login'%}?next={{request.path}}">Login</a>
+        {% endif %}
+        
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

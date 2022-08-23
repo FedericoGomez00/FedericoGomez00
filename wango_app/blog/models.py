@@ -21,7 +21,7 @@ class Blog(models.Model):
         verbose_name="Publication date",
         default=timezone.now()
         )
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     likes = models.IntegerField(default=0)
 
     def __str__(self) -> str:
